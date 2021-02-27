@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             name='url',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('long_url', models.CharField(max_length=10000, null=True, unique=True)),
-                ('short_hash', models.CharField(max_length=10000, null=True, unique=True)),
+                ('long_url', models.CharField(max_length=10000, unique=True)),
+                ('short_hash', models.CharField(max_length=10000, unique=True)),
                 ('count', models.IntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
