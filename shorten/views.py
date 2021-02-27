@@ -10,7 +10,7 @@ hash_set=set()
 
 @api_view(['GET'])
 def geturl(request):
-    shorted = request.query_params.get('short_hash')
+    shorted = request.query_params.get('q')
     #print(shorted, "shorted value")
     try:
         req_url = url.objects.get(short_hash=shorted)
@@ -36,7 +36,7 @@ def posturl(request):
             l_url = url.objects.get(long_url=long_url)
             a=l_url.short_hash
             print(a)
-            ans1 = 'http://localhost:8000/a/?short_hash=' + a
+            ans1 = 'http://localhost:8000/a/?q=' + a
             return Response(ans1)
         ##
         #short_hash = 'hacodd2eerf4343' # static hash to test
@@ -50,7 +50,7 @@ def posturl(request):
         count = 0
         myurl=url(long_url=long_url,short_hash=short_hash,count=count,)
         myurl.save()
-        ans = 'http://localhost:8000/a/?short_hash=' + short_hash
+        ans = 'http://localhost:8000/a/?q=' + short_hash
         return Response(ans)
 
 
