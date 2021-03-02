@@ -25,7 +25,7 @@ def geturl(request):
         return HttpResponse(e)
         #return JsonResponse({"message": "Requested URL not found"})
 
-@api_view(['POST'])
+@api_view(['POST','GET'])
 def posturl(request):
     if request.method=='POST':
         long_url = request.POST.get('long_url')
@@ -52,6 +52,8 @@ def posturl(request):
         myurl.save()
         ans = 'http://localhost:8000/a/?q=' + short_hash
         return Response(ans)
+    else:
+        return Response('/')
 
 
 @api_view(['GET'])
